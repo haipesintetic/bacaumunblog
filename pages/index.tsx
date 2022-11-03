@@ -6,6 +6,7 @@ const graphcms= new GraphQLClient(
   "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cla0pikzo46d801tb7claff3z/master"
 );
 import BlogCard from "../components/BlogCard"
+import { Key } from 'react';
 const QUERY =gql`
 {
   postsMUN{
@@ -37,7 +38,7 @@ export async function getStaticProps() {
   };
 }
   
-export default function Home({postsMUN}) {
+export default function Home({ postsMUN }:any ) {
   return (
     <div className={styles.container}>
       <Head>
@@ -48,13 +49,13 @@ export default function Home({postsMUN}) {
       
       <main className={styles.main}>
 
-        {postsMUN.map((postmun)=>(
-          <BlogCard title={postmun.title} 
-          category={postmun.category}
-          author={postmun.author} 
-          coverPhoto={postmun.coverPhoto}
-           key={postmun.id} 
-           slug={postmun.slug}/>
+        {postsMUN.map((postMUN: { title: any; category: any; author: any; coverPhoto: any; id: Key | null | undefined; slug: any; }) => (
+          <BlogCard title={postMUN.title} 
+          category={postMUN.category}
+          author={postMUN.author} 
+          coverPhoto={postMUN.coverPhoto}
+           key={postMUN.id} 
+           slug={postMUN.slug}/>
         ))}
       </main>
 
