@@ -17,3 +17,11 @@
   .main {
   }
 }
+.bottom{
+  align-items: center;
+  margin:2rem;
+  color: white;
+}
+.bottom h2{
+  color: white;
+}
